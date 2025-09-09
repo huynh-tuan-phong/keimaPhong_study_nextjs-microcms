@@ -1,0 +1,117 @@
+/* Article Detail */
+.article-detail {
+  max-width: 860px;
+  width: 100%;
+  margin: 32px auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  /* Tăng độ nổi khối + thêm viền để không bị chìm vào nền */
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow:
+    0 10px 28px rgba(0,0,0,0.10),
+    0 2px 6px rgba(0,0,0,0.06);
+}
+
+.article-detail__header {
+  margin-bottom: 16px;
+}
+
+.article-detail__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.article-detail__category {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #1f9400;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.article-detail__date {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.article-detail__title {
+  font-size: clamp(20px, calc(1rem + 1vw), 28px);
+  line-height: 1.25;
+  margin: 6px 0 10px;
+}
+
+.article-detail__figure {
+  margin: 18px 0 24px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.article-detail__figure img {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+}
+
+.article-detail__figcaption {
+  color: #6b7280;
+  font-size: 12px;
+  text-align: center;
+  padding-top: 6px;
+}
+
+.article-detail__description {
+  font-size: 16px;
+  line-height: 1.85;
+  color: #222;
+}
+
+/* Typography within content */
+.article-detail__description p { margin: 0 0 1.1em; }
+.article-detail__description h2 { font-size: 1.5rem; margin: 1.6em 0 0.6em; }
+.article-detail__description h3 { font-size: 1.25rem; margin: 1.4em 0 0.6em; }
+.article-detail__description ul, 
+.article-detail__description ol { padding-left: 1.4em; margin: 0.8em 0 1.2em; }
+.article-detail__description li { margin: 0.35em 0; }
+.article-detail__description blockquote {
+  margin: 1.2em 0;
+  padding: 0.8em 1em;
+  border-left: 4px solid #e5e7eb;
+  background: #f9fafb;
+  color: #374151;
+}
+.article-detail__description pre {
+  margin: 1.2em 0;
+  padding: 12px 14px;
+  background: #0b1020;
+  color: #e5e7eb;
+  border-radius: 8px;
+  overflow: auto;
+}
+.article-detail__description code {
+  background: #f3f4f6;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.article-detail__description img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Related section */
+.article-detail__related {
+  max-width: 860px;
+  margin: 32px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+.article-detail__related h2 {
+  font-size: 18px;
+  margin-bottom: 12px;
+}

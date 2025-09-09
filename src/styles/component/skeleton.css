@@ -1,0 +1,35 @@
+/* Generic skeleton shimmer */
+.skeleton-box,
+.skeleton-line,
+.skeleton-pill {
+  position: relative;
+  overflow: hidden;
+  background: #e5e7eb;
+}
+
+.skeleton-box::after,
+.skeleton-line::after,
+.skeleton-pill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  animation: skel 1.2s infinite;
+}
+
+@keyframes skel {
+  to { transform: translateX(100%); }
+}
+
+/* Article list skeleton item */
+.article-skel { list-style: none; }
+.article-skel__thumb {
+  aspect-ratio: 460 / 300;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+.article-skel__meta { height: 22px; margin-bottom: 6px; display: flex; align-items: center; }
+.skeleton-pill { width: 76px; height: 20px; border-radius: 999px; }
+.skeleton-line { height: 18px; border-radius: 6px; width: 80%; }
+

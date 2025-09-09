@@ -1,0 +1,15 @@
+.article-item {
+  position: relative
+}
+.article-item__category {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 3px 5px;
+  background-color: #1f9400;
+  font-size: 12px;
+  color: #fff;
+}
+.article-item h3 {
+  font-size: 16px;
+}

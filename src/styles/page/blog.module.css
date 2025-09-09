@@ -1,0 +1,45 @@
+.page-title {
+  padding: 8px 0 4px;
+  margin-bottom: 8px; /* tighter to subtitle */
+}
+
+/* Article list grid moved to src/components/ArticleList.module.css */
+
+.paging-skeleton {
+  height: 48px;
+}
+
+.page-desc {
+  color: #6b7280; /* gray-600 */
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+/* Page layout: aside (title + desc) on left, list on right */
+.page-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 40px;
+  align-items: start;
+  padding-top: 30px;
+}
+
+.page-aside {
+  position: sticky;
+  top: 12px; /* keeps title in view slightly */
+}
+
+.page-content {
+  min-width: 0; /* prevent overflow in grid */
+}
+
+@media (max-width: 900px) {
+  .page-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .page-aside {
+    position: static;
+  }
+}
