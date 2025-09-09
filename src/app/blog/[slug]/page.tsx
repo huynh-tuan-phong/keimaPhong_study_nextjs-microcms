@@ -12,7 +12,7 @@ export default async function ArticleDetail({ params, }: { params: Promise<Param
   const { slug } = await params;
 
   // Try by slug first
-  let article: any = null;
+  let article: IArticle | null = null;
   try {
     const res = await serverClient.get<IArticleResponse>(
       `/blog?filters=${encodeURIComponent(`slug[equals]${slug}`)}&limit=1`
@@ -23,8 +23,8 @@ export default async function ArticleDetail({ params, }: { params: Promise<Param
   // Fallback: try by content ID
   if (!article) {
     try {
-      const byId = await serverClient.get(`/blog/${slug}`);
-      article = byId.data ?? null;
+      const byId = await serverClient.get<IArticle>(`/blog/${slug}`);
+      article = (byId.data as IArticle) ?? null;
     } catch {}
   }
 

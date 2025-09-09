@@ -11,7 +11,7 @@ export const revalidate = 3600;
 export default async function ArticleDetail({ params, }: { params: Promise<Params>; }) {
   const { slug } = await params;
 
-  let article: any = null;
+  let article: IArticle | null = null;
   try {
     const res = await serverClient.get<IArticleResponse>(
       `/blog?filters=${encodeURIComponent(`slug[equals]${slug}`)}&limit=1`
@@ -21,8 +21,8 @@ export default async function ArticleDetail({ params, }: { params: Promise<Param
 
   if (!article) {
     try {
-      const byId = await serverClient.get(`/blog/${slug}`);
-      article = byId.data ?? null;
+      const byId = await serverClient.get<IArticle>(`/blog/${slug}`);
+      article = (byId.data as IArticle) ?? null;
     } catch {}
   }
 

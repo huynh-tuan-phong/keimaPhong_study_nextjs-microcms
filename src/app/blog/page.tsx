@@ -65,7 +65,7 @@ export default function Blog() {
       try {
         const res = await client.get<IArticleResponse>(
           `/blog?offset=${offset}&limit=${BLOG_LIMIT}`,
-          { signal: (abort as AbortController).signal as any }
+          { signal: (abort as AbortController).signal as AbortSignal }
         );
         setArticles(res.data.contents);
         setTotalCount(res.data.totalCount);
@@ -74,8 +74,13 @@ export default function Blog() {
           totalCount: res.data.totalCount,
           ts: Date.now(),
         });
-      } catch (err: any) {
-        if (err?.name === 'CanceledError' || err?.message === 'canceled') return;
+      } catch (err: unknown) {
+        const isCanceled = (e: unknown) =>
+          typeof e === 'object' && e !== null && (
+            ('name' in e && (e as { name?: string }).name === 'CanceledError') ||
+            ('message' in e && (e as { message?: string }).message === 'canceled')
+          );
+        if (isCanceled(err)) return;
         setErrorMsg('Failed to load data. Please try again.');
         console.error('Error fetching blog data:', err);
       } finally {
