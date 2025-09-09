@@ -16,10 +16,12 @@ export async function GET(req: NextRequest) {
       params: { offset, limit, filters, fields, orders },
     });
     return NextResponse.json(res.data, { status: 200 });
-  } catch (err: any) {
-    const status = err?.response?.status ?? 500;
-    const message = err?.response?.data ?? { message: "Upstream error" };
-    return NextResponse.json(message, { status });
+  } catch (err: unknown) {
+    if (axios.isAxiosError(err)) {
+      const status = err.response?.status ?? 500;
+      const message = err.response?.data ?? { message: "Upstream error" };
+      return NextResponse.json(message, { status });
+    }
+    return NextResponse.json({ message: "Unexpected error" }, { status: 500 });
   }
 }
-
