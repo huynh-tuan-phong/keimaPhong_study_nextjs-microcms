@@ -29,7 +29,7 @@ export default async function ArticleDetail({ params, }: { params: Promise<Param
   if (!article) return;
 
   const RELATED_LIMIT = 4;
-  const relatedFields = ['slug','title','eyecatch','category','publishedAt'].join(',');
+  const relatedFields = ['id','slug','title','eyecatch','category','publishedAt'].join(',');
 
   let relatedUrl = '';
   if (article.category?.id) {

@@ -14,7 +14,11 @@ const ArticleList = ({ articles, basePath = "/blog" }: IArticlesProps) => {
       <ul className={styles.list}>
         {articles.map((article: IArticle) => {
           return (
-              <ArticleItem article={article} basePath={basePath} key={article.id} />
+              <ArticleItem
+                article={article}
+                basePath={basePath}
+                key={article.id ?? article.slug}
+              />
           );
         })}
       </ul>
