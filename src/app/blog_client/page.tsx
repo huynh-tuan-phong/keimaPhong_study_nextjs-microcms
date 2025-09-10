@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
 import client from '@/lib/client';
 import { BLOG_LIMIT } from '@/lib/constants';
 import ArticleList from '@/components/ArticleList';
@@ -12,26 +11,14 @@ import styles from '@/styles/page/blog.module.css';
 type CacheEntry = { contents: IArticle[]; totalCount: number; ts: number };
 
 export default function BlogClient() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-
-  const pageFromUrl = useMemo(() => {
-    const raw = searchParams?.get('page') ?? '1';
-    const parsed = Number.parseInt(raw, 10);
-    return Number.isFinite(parsed) && parsed > 0 ? parsed : 1;
-  }, [searchParams]);
-
-  const [currentPage, setCurrentPage] = useState<number>(pageFromUrl);
+  // Pure CSR: keep pagination state locally (not synced to URL)
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const [articles, setArticles] = useState<IArticle[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
   const [errorMsg, setErrorMsg] = useState<string>('');
 
   const cacheRef = useRef<Map<number, CacheEntry>>(new Map());
-
-  useEffect(() => {
-    if (currentPage !== pageFromUrl) setCurrentPage(pageFromUrl);
-  }, [pageFromUrl, currentPage]);
 
   const offset = useMemo(() => (currentPage - 1) * BLOG_LIMIT, [currentPage]);
 
@@ -41,10 +28,8 @@ export default function BlogClient() {
   }, [currentPage]);
 
   const handlePageChange = useCallback((page: number) => {
-    const params = new URLSearchParams(searchParams?.toString());
-    params.set('page', String(page));
-    router.replace(`?${params.toString()}`);
-  }, [router, searchParams]);
+    setCurrentPage(page);
+  }, []);
 
   useEffect(() => {
     let abort: AbortController | null = new AbortController();
@@ -147,4 +132,3 @@ export default function BlogClient() {
     </main>
   );
 }
-
