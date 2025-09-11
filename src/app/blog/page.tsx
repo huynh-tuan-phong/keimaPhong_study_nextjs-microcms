@@ -27,7 +27,7 @@ export default function Blog() {
                     <li><strong>Suspense fallback</strong>: the shell shows a skeleton first, then hydrates client data.</li>
                     <li><strong>URL sync</strong>: keeps <code>?page</code> in the address bar; back/forward works as expected.</li>
                     <li><strong>Pros</strong>: smooth paging; minimal server work after first render.</li>
-                    <li><strong>Cons</strong>: list HTML isn't in the initial server response (arrives after hydrate).</li>
+                    <li><strong>Cons</strong>: list HTML is not in the initial server response (arrives after hydrate).</li>
                     <li><strong>Compare</strong>: vs <em>Only CSR</em> (no <code>?page</code> sync) and vs <em>ISR</em> (HTML contains data; updates per <code>revalidate</code>).</li>
                   </ul>
                 </div>
@@ -45,4 +45,3 @@ export default function Blog() {
     </Suspense>
   );
 }
-
