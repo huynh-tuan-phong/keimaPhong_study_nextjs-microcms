@@ -14,6 +14,7 @@
   font-size: 14px;
   margin-top: 0;
   margin-bottom: 16px;
+  line-height: 1.5;
 }
 
 /* Page layout: aside (title + desc) on left, list on right */
@@ -33,6 +34,16 @@
 .page-content {
   min-width: 0; /* prevent overflow in grid */
 }
+
+/* Informational note under descriptions */
+.page-note {
+  font-size: 14px;
+  color: #6b7280; /* gray-600 */
+  margin: 8px 0 18px;
+  line-height: 1.5;
+}
+.page-note code { background: #6b7280; padding: 0 4px; border-radius: 4px; color: #fff; }
+.page-note p { margin: 4px 0; }
 
 @media (max-width: 900px) {
   .page-grid {

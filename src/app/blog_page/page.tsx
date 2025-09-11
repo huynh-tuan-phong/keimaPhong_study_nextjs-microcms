@@ -20,11 +20,16 @@ export default async function Blog() {
       <div className="container">
         <div className={styles['page-grid']}>
           <aside className={styles['page-aside']}>
-            <h1 className={styles['page-title']}>Blog (/page/N)</h1>
-            <p className={styles['page-desc']}>
-              Server component with route-segment pagination.
-              SEO-friendly links like <code>/blog_page/page/2</code>.
-            </p>
+        <h1 className={styles['page-title']}>ISR - /page/N</h1>
+        <p className={styles['page-desc']}>
+          Server-rendered (revalidate 1h); route segment.
+          Acronym: ISR = Incremental Static Regeneration.
+        </p>
+        <div className={styles['page-note']}>
+          <p><strong>ISR</strong>: static cache with background regeneration based on <code>revalidate</code>.</p>
+          <p><strong>revalidate = 3600s</strong>: the first request after expiry triggers a rebuild; subsequent requests receive the fresh page.</p>
+          <p><strong>/page/N</strong>: pagination via URL segments; SEO-friendly links.</p>
+        </div>
           </aside>
           <section className={styles['page-content']}>
             <ArticleList articles={data.contents} basePath="/blog_page" />

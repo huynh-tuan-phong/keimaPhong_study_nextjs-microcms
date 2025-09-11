@@ -99,10 +99,11 @@ export default function ClientPage() {
       <div className="container">
         <div className={styles['page-grid']}>
           <aside className={styles['page-aside']}>
-            <h1 className={styles['page-title']}>Blog (CSR)</h1>
+            <h1 className={styles['page-title']}>Hybrid CSR</h1>
             <p className={styles['page-desc']}>
-              Client-side pagination: data fetched in the browser with a loading skeleton.
-              URL keeps <code>?page</code> in sync; transitions are instant.
+              Server-rendered shell; the article list is rendered on the client.
+              Keeps <code>?page</code> in sync in the URL for pagination and back/forward navigation.
+              Acronyms: CSR = Client-Side Rendering; RSC = React Server Components.
             </p>
           </aside>
 
@@ -148,4 +149,3 @@ export default function ClientPage() {
     </main>
   );
 }
-

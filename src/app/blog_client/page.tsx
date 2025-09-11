@@ -84,10 +84,14 @@ export default function BlogClient() {
       <div className="container">
         <div className={styles['page-grid']}>
           <aside className={styles['page-aside']}>
-            <h1 className={styles['page-title']}>Blog (Client)</h1>
+            <h1 className={styles['page-title']}>Only CSR</h1>
             <p className={styles['page-desc']}>
-              Pure client-side pagination. Data is fetched in the browser and URL ?page stays in sync.
+              Client-only; local state (no URL sync).
+              Acronym: CSR = Client-Side Rendering.
             </p>
+            <div className={styles['page-note']}>
+              <p><strong>CSR</strong>: everything runs in the browser; data and pagination update instantly.</p>
+            </div>
           </aside>
 
           <section className={styles['page-content']}>

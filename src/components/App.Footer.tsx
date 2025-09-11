@@ -19,9 +19,38 @@ const Footer = () => {
         <nav className="footer-nav" aria-label="Footer Navigation">
           <p className="footer-title">Explore</p>
           <ul>
-            <li><Link href="/blog" title="Client-side pagination (fetch in browser)">Blog (CSR)</Link></li>
-            <li><Link href="/blog_param" title="Query param pagination using ?page">Blog (?page)</Link></li>
-            <li><Link href="/blog_page" title="Route segment pagination: /page/N">Blog (/page/N)</Link></li>
+            <li>
+              <Link
+                href="/blog"
+                title="Khung trang render trên server; danh sách bài viết render ở phía trình duyệt; đồng bộ tham số ?page trên URL để phân trang."
+              >
+                Hybrid CSR
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/blog_client"
+                title="Trang chỉ render ở phía trình duyệt; dữ liệu và phân trang được tải sau khi trang tải; không đồng bộ tham số ?page trên URL."
+              >
+                Only CSR
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/blog_param"
+                title="Trang render trên server (tạo tĩnh theo chu kỳ); phân trang bằng tham số truy vấn ?page."
+              >
+                ISR (?page)
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/blog_page"
+                title="Trang render trên server (tạo tĩnh theo chu kỳ); phân trang bằng phân đoạn đường dẫn /page/N."
+              >
+                ISR (/page/N)
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

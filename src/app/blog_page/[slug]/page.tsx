@@ -78,7 +78,6 @@ export default async function ArticleDetail({ params, }: { params: Promise<Param
               height={article.eyecatch?.height || 630}
               loading="lazy"
             />
-            {/* figcaption removed due to missing type for caption */}
           </figure>
           <div
             className="article-detail__description"
